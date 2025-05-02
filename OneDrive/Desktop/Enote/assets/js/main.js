@@ -133,4 +133,28 @@
 
   window.addEventListener("load", initSwiper);
 
+  /**
+   * 動態載入共用 nav 與 footer
+   */
+  document.addEventListener('DOMContentLoaded', function () {
+    // 載入 nav
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(html => {
+        const header = document.getElementById('header');
+        if (header) {
+          header.outerHTML = html;
+        }
+      });
+    // 載入 footer
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(html => {
+        const footer = document.getElementById('footer');
+        if (footer) {
+          footer.outerHTML = html;
+        }
+      });
+  });
+
 })();
